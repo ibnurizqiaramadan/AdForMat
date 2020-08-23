@@ -12,7 +12,7 @@ class M_surat extends CI_Model
         $this->table2 = "t_dokumen as doc";
         $this->table2_ = "t_dokumen";
         $this->column_search = array('pen.nama', 'doc.nama', 'keterangan', 'status', 'tgl');
-        $this->column_order = array('pen.nama', 'doc.nama', 'keterangan', 'status', 'tgl');
+        $this->column_order = array(null,'pen.nama', 'doc.nama','keterangan', 'tgl', 'status');
         $this->order = array('t_permintaan.id' => 'desc');
     }
 

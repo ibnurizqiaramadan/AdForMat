@@ -34,7 +34,7 @@ $(document).ready(function () {
             {
                 "sClass": "text-center",
                 "targets": [5],
-                "orderable": false
+                // "orderable": false
             }, 
             {
                 "sClass": "text-center",

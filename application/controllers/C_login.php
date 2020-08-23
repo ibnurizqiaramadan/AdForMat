@@ -11,6 +11,9 @@ class C_login extends CI_Controller {
 	
 	function index()
 	{
+		if ($this->session->token) {
+			redirect(base_url('dashboard'));
+		}
 		$this->load->view('v_login');
 	}
 

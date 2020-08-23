@@ -6,7 +6,7 @@ class C_dokumen extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        if (!$this->session->token) {
+        if (!$this->session->token || $this->session->level != 1) {
             redirect(base_url('login'));
         }
         $this->load->model('M_dokumen', 'dokumen');

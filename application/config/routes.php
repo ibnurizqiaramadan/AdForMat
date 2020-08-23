@@ -28,6 +28,9 @@ $route['master/dokumen/delete/(:any)'] = 'admin/C_dokumen/delete/$1';
 $route['master/dokumen/update'] = 'admin/C_dokumen/update';
 
 
-$route['surat/pending'] = 'admin/C_surat/pending';
-$route['surat/ditolak'] = 'admin/C_surat/ditolak';
-$route['surat/selesai'] = 'admin/C_surat/selesai';
+$route['surat/(:any)'] = 'admin/C_surat/surat/$1';
+$route['surat/(:any)/data'] = 'admin/C_surat/data';
+$route['surat/delete/(:any)'] = 'admin/C_surat/delete/$1';
+$route['surat/action/(:any)/(:any)'] = 'admin/C_surat/action/$1/$2';
+$route['surat/action/tambah'] = 'admin/C_surat/add_';
+$route['surat/unduh/(:any)'] = 'admin/C_surat/unduh/$1';

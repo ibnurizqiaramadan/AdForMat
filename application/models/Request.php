@@ -72,7 +72,9 @@ class Request extends CI_Model
 
     function query()
     {
+        ob_clean();
         echo $this->db->last_query();
+        exit(0);
     }
 
     function input($input)

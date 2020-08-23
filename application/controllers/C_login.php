@@ -25,6 +25,7 @@ class C_login extends CI_Controller {
 		} else {
 			$data = $cek['data'];
 			$session = [
+				'userid'	=> $data['id'],
 				'username' 	=> $data['username'],
 				'nama' 		=> $data['nama'],
 				'level' 	=> $data['level'],

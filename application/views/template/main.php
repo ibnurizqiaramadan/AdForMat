@@ -113,30 +113,32 @@
                 <p>Dashboard</p>
               </a>
             </li>
-            <li class="nav-item has-treeview" id="tree-master">
-              <a href="#" class="nav-link" id="menu-master">
-                <i class="nav-icon fas fa-server"></i>
-                <!-- <span class="badge badge-info right">6</span> -->
-                <p>
-                  Master Data
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="<?= base_url('master/user') ?>" class="nav-link" id="sub-user">
-                    <i class="fas fa-users nav-icon"></i>
-                    <p>User</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= base_url('master/dokumen') ?>" class="nav-link" id="sub-dokumen">
-                    <i class="fas fa-file-pdf nav-icon"></i>
-                    <p>Dokumen</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+            <?php if ($this->session->level == 1) { ?>
+              <li class="nav-item has-treeview" id="tree-master">
+                <a href="#" class="nav-link" id="menu-master">
+                  <i class="nav-icon fas fa-server"></i>
+                  <!-- <span class="badge badge-info right">6</span> -->
+                  <p>
+                    Master Data
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('master/user') ?>" class="nav-link" id="sub-user">
+                      <i class="fas fa-users nav-icon"></i>
+                      <p>User</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('master/dokumen') ?>" class="nav-link" id="sub-dokumen">
+                      <i class="fas fa-file-pdf nav-icon"></i>
+                      <p>Dokumen</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } ?>
             <li class="nav-item has-treeview" id="tree-surat">
               <a href="#" class="nav-link" id="menu-surat">
                 <i class="nav-icon fas fa-envelope"></i>
@@ -148,9 +150,21 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
+                  <a href="<?= base_url('surat/semua') ?>" class="nav-link" id="sub-semua">
+                    <i class="fas fa-mail-bulk nav-icon"></i>
+                    <p>Semua</p>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a href="<?= base_url('surat/pending') ?>" class="nav-link" id="sub-pending">
                     <i class="far fa-clock nav-icon"></i>
                     <p>Pending</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="<?= base_url('surat/acc') ?>" class="nav-link" id="sub-acc">
+                    <i class="far fa-check-circle nav-icon"></i>
+                    <p>Acc</p>
                   </a>
                 </li>
                 <li class="nav-item">

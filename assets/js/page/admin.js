@@ -188,11 +188,11 @@ $(document).ready(function(){
   $("#sub-" + subMenu).addClass('active')
 })
 
-$("#btnKeluar").on('click', function(){
+$("#btnLogout").on('click', function () {
   confirmSweet("", 'Yakin ingin Keluar ?').then((result) => {
     // alert(result)
     if (result) {
-      $(location).attr('href', baseUrl + 'admin/login/keluar/' + token)
+      $(location).attr('href', `${baseUrl}logout/${token}`)
     }
   })
 })

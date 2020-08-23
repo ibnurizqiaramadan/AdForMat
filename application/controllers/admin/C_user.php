@@ -72,7 +72,7 @@ class C_user extends CI_Controller
 
     function insert()
     {
-        $data = $this->req->all(['password' => $this->req->acak('123')]);
+        $data = $this->req->all(['password' => $this->req->acak($this->req->input('username'))]);
         if ($this->user->insert($data) == true) {
             echo json_encode([
                 'status' => 'ok',

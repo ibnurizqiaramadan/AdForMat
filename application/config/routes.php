@@ -34,3 +34,6 @@ $route['surat/delete/(:any)'] = 'admin/C_surat/delete/$1';
 $route['surat/action/(:any)/(:any)'] = 'admin/C_surat/action/$1/$2';
 $route['surat/action/tambah'] = 'admin/C_surat/add_';
 $route['surat/unduh/(:any)'] = 'admin/C_surat/unduh/$1';
+$route['surat/get/notif'] = 'admin/C_surat/getNotif';
+$route['surat/get/surat/(:any)'] = 'admin/C_surat/getSurat/$1';
+$route['surat/test/surat'] = 'admin/C_surat/testSurat';

@@ -25,6 +25,7 @@
     <div class="login-box">
         <div class="login-logo">
             <h1>AdForMat</h1>
+            <h4>Sistem Pengelolaan Adminstrasi Formulir dan Permintaan Surat Mahasiswa</h4>
         </div>
         <!-- /.login-logo -->
         <div class="card">

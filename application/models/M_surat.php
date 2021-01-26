@@ -23,7 +23,7 @@ class M_surat extends CI_Model
         $this->db->join($this->table1, "t_permintaan.id_user = pen.id", 'left');
         $this->db->join($this->table2, "t_permintaan.id_jenis = doc.id", 'left');
         if ($this->status != 'semua') {
-            $this->db->where('status', $this->status);
+            $this->db->like('status', $this->status, 'both');
         }
         if ($this->session->level == 2) {
             $this->db->where('id_user', $this->session->userid);
@@ -124,6 +124,34 @@ class M_surat extends CI_Model
         $berkas = $this->db->get_where($this->table2_, ['id' => $permintaan->id_jenis])->row();
         // $this->req->print($berkas);
         return $berkas->file;
+    }
+
+    function getAcc($id)
+    {
+        $acc = $this->db->get_where($this->table, $this->req->id($id))->row();
+        return $acc;
+    }
+
+    function cekKataKunci()
+    {
+        $dokumen = $this->db->get_where($this->table2_, ['id' => $this->req->input('id_jenis')])->row();
+        $kecocokan = $dokumen->kecocokan;
+        $kataKunci = explode(' ', strtolower($dokumen->kata_kunci));
+        $keterangan = array_unique(explode(' ', $this->req->input('keterangan')));
+        $jmlKataKunci = count($kataKunci);
+        $ketemu = 0;
+        foreach ($keterangan as $key) {
+            if (in_array(strtolower($key), $kataKunci)) {
+                $ketemu++;
+            }
+        }
+        $persenCocok = $ketemu / $jmlKataKunci * 100;
+        echo "Ketemu : $ketemu <br>JML Kata kunci $jmlKataKunci <br>Total Persen : $persenCocok";
+        if ($persenCocok >= $kecocokan) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     function getJenis()

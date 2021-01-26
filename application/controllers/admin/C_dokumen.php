@@ -28,7 +28,10 @@ class C_dokumen extends CI_Controller
             $row = array();
             $row[] = $no;
             $row[] = $field->nama;
+            $row[] = $field->kode;
             $row[] = $field->file;
+            $row[] = $field->kata_kunci;
+            $row[] = "$field->kecocokan%";
             $row[] = $button;
             $data[] = $row;
         }
@@ -69,9 +72,9 @@ class C_dokumen extends CI_Controller
     {
         $config = [
             'file' => 'file',
-            'type' => 'doc',
-            'fileName' => time() . "-" . $this->req->input('nama'),
-            'path' => 'dokumen',
+            'type' => 'custom',
+            'path' => 'surat',
+            'encrypt' => true
         ];
         $data = $this->req->upload_form($config);
         if ($this->dokumen->insert($data) == true) {
@@ -90,7 +93,17 @@ class C_dokumen extends CI_Controller
     function update()
     {
         $id = $this->input->post('id');
-        $data = $this->req->all(['id' => false]);
+        $config = [
+            'file' => 'file',
+            'type' => 'doc',
+            'fileName' => time() . "-" . $this->req->input('nama'),
+            'path' => 'dokumen',
+            'customInput' => ['id' => false]
+        ];
+        $data = $this->req->upload_form($config);
+        if ($_FILES['file']['name']) {
+            unlink("./uploads/surat/" . $this->dokumen->getFile($id));
+        }
         if ($this->dokumen->update($data, $this->req->id($id)) == true) {
             $msg = array(
                 'status' => 'ok',
@@ -107,8 +120,12 @@ class C_dokumen extends CI_Controller
 
     function delete($id)
     {
+        $berkas = $this->dokumen->getFile($id);
         if ($this->dokumen->delete($this->req->id($id)) == true) {
-            $msg = array(
+            if (file_exists("./uploads/surat/$berkas")) {
+                unlink("./uploads/surat/$berkas");
+            }
+                $msg = array(
                 'status' => 'ok',
                 'msg' => 'Berhasil menghapus data !'
             );

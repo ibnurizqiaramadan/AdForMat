@@ -27,7 +27,7 @@ $(document).ready(function () {
             },
             {
                 "sClass": "text-center",
-                "targets": [3],
+                "targets": [5],
             }
         ],
     });
@@ -43,6 +43,9 @@ $('#list_dokumen').on('click', '#edit', function () {
             response = JSON.parse(result)
             $("#idData").val(response.id)
             $("#nama").val(response.nama)
+            $("#kode").val(response.kode)
+            $("#kecocokan").val(response.kecocokan)
+            $("#kata_kunci").val(response.kata_kunci)
             $("#modal-edit").modal('show')
         },
         error: function (error) {
@@ -115,10 +118,10 @@ $("#formAddDokumen").submit(function (e) {
         contentType: false,
         cache: false,
         beforeSend: function () {
-            disableButton()
+            // disableButton()
         },
         complete: function () {
-            enableButton()
+            // enableButton()
         },
         success: function (result) {
             let response = JSON.parse(result)

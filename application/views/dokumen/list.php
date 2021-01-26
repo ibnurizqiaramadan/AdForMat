@@ -10,7 +10,10 @@
 				<thead>
 					<th>No</th>
 					<th>Nama</th>
+					<th>Kode</th>
 					<th>File</th>
+					<th>Kata Kunci</th>
+					<th>Kecocokan</th>
 					<th>Aksi</th>
 				</thead>
 				<tbody>
@@ -36,12 +39,24 @@
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-						<label for="exampleInputEmail1">Nama</label>
+						<label for="">Nama</label>
 						<input type="text" class="form-control" name="nama" placeholder="Masukan Nama" required>
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">File</label>
+						<label for="">Kode</label>
+						<input type="text" class="form-control" name="kode" placeholder="Masukan Nama" required>
+					</div>
+					<div class="form-group">
+						<label for="">Kata Kunci</label>
+						<textarea name="kata_kunci" class="form-control" id="" cols="30" rows="10" required></textarea>
+					</div>
+					<div class="form-group">
+						<label for="">File</label>
 						<input type="file" name="file" required>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Kecocokan (%)</label>
+						<input type="number" max="100" min="0" class="form-control" name="kecocokan" placeholder="Masukan Kecocokan %" required>
 					</div>
 				</div>
 				<div class="modal-footer justify-content-between">
@@ -71,8 +86,20 @@
 							<input type="text" class="form-control" name="nama" id="nama" placeholder="Masukan Nama" required>
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">File</label>
+							<label for="exampleInputEmail1">Kode</label>
+							<input type="text" class="form-control" name="kode" id="kode" placeholder="Masukan Nama" required>
+						</div>
+						<div class="form-group">
+							<label for="">Kata Kunci</label>
+							<textarea name="kata_kunci" class="form-control" id="kata_kunci" cols="30" rows="10" required></textarea>
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">File (Pilih file jika ingin merubah File)</label>
 							<input type="file" name="file">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Kecocokan (%)</label>
+							<input type="number" max="100" min="0" class="form-control" name="kecocokan" id="kecocokan" placeholder="Masukan Kecocokan %" required>
 						</div>
 					</div>
 					<div class="modal-footer justify-content-between">

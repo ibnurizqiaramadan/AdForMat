@@ -83,10 +83,10 @@ $("#formAddPermintaan").submit(function (e) {
         contentType: false,
         cache: false,
         beforeSend: function () {
-            disableButton()
+            // disableButton()
         },
         complete: function () {
-            enableButton()
+            // enableButton()
         },
         success: function (result) {
             let response = JSON.parse(result)
@@ -149,6 +149,34 @@ $(`#list_${statusNa}`).on('click', '#unduh', function () {
     let id = $(this).data('id');
     window.open(`${baseUrl}surat/unduh/${id}`, '_blank');
     table.ajax.reload(null, false)
+})
+
+$("#jenisDokumen").on('change', function(){
+    let id = $(this).val();
+    if ($(this).val() == '') {
+        $("#inputanForm").html('')
+    } else {
+        $.ajax({
+            url: baseUrl + 'surat/get/surat/' + id,
+            type: "GET",
+            success: function (result) {
+                let response = JSON.parse(result)
+                let html = ""
+                response.forEach(key => {
+                    html += `
+                    <div class="form-group">
+                        <label>${key.name}</label>
+                        <input type="${key.type}" name="${key.name}" value="${key.value}" class="form-control" ${key.ro}>
+                    </div>
+                `
+                });
+                $("#inputanForm").html(html)
+            },
+            error: function (error) {
+                errorCode(error)
+            }
+        })
+    }
 })
 
 setInterval(() => {

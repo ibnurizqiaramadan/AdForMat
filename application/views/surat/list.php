@@ -1,7 +1,7 @@
 <input type="hidden" id="statusNa" value="<?= $this->uri->segment('2'); ?>">
 <div class="col-12">
     <div class="card">
-        <?php $status = $this->uri->segment('2'); if ($this->session->level == 2 && $status == "semua" || $status == "pending") { ?>
+        <?php $status = $this->uri->segment('2'); if ($this->session->level == 2 && ($status == "semua" || $status == "pending")) { ?>
             <div class="card-header">
                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-tambah"><i class="fas fa-plus"></i> Buat Permintaan</button>
             </div>
@@ -43,12 +43,15 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Jenis</label>
                         <!-- <input type="text" class="form-control" name="nama" placeholder="Masukan Nama" required> -->
-                        <select name="id_jenis" class="form-control">
-                            <option value="" selected disabled>-- Pilih --</option>
+                        <select name="id_jenis" id="jenisDokumen" class="form-control">
+                            <option value="" selected>-- Pilih --</option>
                             <?php foreach($jenis as $key) { ?>
                                 <option value="<?= $key->id?>"><?= $key->nama ?></option>
                             <?php } ?>
                         </select>
+                    </div>
+                    <div id="inputanForm">
+
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Keterangan</label>

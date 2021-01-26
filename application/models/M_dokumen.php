@@ -89,6 +89,12 @@ class M_dokumen extends CI_Model
         return $this->db->get_where($this->table, $this->req->id($id))->row();
     }
 
+    function getFile($id)
+    {
+        $data = $this->db->get_where($this->table, $this->req->id($id))->row();
+        return $data->file;
+    }
+
     function update($data, $where)
     {
         $this->db->where($where);

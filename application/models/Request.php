@@ -7,7 +7,8 @@ class Request extends CI_Model
         parent::__construct();
         $this->uploadTypes = array(
             'doc' => ['allowed_types' => 'pdf|docx|doc'],
-            'img' => ['allowed_types' => 'jpg|jpeg|png']
+            'img' => ['allowed_types' => 'jpg|jpeg|png'],
+            'custom' => ['allowed_types' => '*'],
         );
     }
 
@@ -161,10 +162,11 @@ class Request extends CI_Model
             );
         }
         // echo count($_FILES['lampiran']['name']);
-        // $this->print($data['file']);
         $config = array_merge($config, $this->uploadTypes[$data['type']]);
         $this->load->library('upload', $config);
         $uploading = $this->upload->do_upload($data['file']) ? true : false;
+        // $this->print($this->upload);
+        // $this->req->print($uploading);
         if (!$uploading) {
             return $data_ = $this->all($customInput);
         } else {

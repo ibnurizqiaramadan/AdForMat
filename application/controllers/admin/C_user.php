@@ -76,7 +76,7 @@ class C_user extends CI_Controller
         if ($this->user->insert($data) == true) {
             echo json_encode([
                 'status' => 'ok',
-                'msg' => 'Berhasil Menambahkan Data !'
+                'msg' => 'Berhasil Menambahkan Data User !'
             ]);
         } else {
             echo json_encode([
